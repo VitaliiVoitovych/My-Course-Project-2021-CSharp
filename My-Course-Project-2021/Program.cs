@@ -10,6 +10,9 @@ namespace My_Course_Project_2021
     {
         static void Main(string[] args)
         {
+            Queue<int> Q = new Queue<int>();
+            Q.Dequeue();
+            Console.ReadLine();
         }
     }
 }

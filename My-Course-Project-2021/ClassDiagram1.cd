@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="My_Course_Project_2021.Node&lt;T&gt;">
+    <Position X="1.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAA=</HashCode>
+      <FileName>Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="My_Course_Project_2021.LinkedList&lt;T&gt;">
+    <Position X="3" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAIAEIAAAAAAEAAABAAAAAAAAAABkAQA=</HashCode>
+      <FileName>LinkedList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="My_Course_Project_2021.Queue&lt;T&gt;">
+    <Position X="4.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQBAEAAAAAAEAAAAAAAAAAAAAAAABAAAAAAAAABEAAA=</HashCode>
+      <FileName>Queue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="My_Course_Project_2021.Stack&lt;T&gt;">
+    <Position X="6.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAEAAAAAAAAAAAAAACIAAAAAAAAAABECAA=</HashCode>
+      <FileName>Stack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

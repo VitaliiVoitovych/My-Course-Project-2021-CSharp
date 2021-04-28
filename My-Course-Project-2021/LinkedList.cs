@@ -17,28 +17,38 @@ namespace My_Course_Project_2021
             return false;
         }
         public void Clear() => Head = null;
-        public void AddAtFront(Node<T> n)
+        public void Clone(LinkedList<T> L)
         {
+            Node<T> ptr = L.Head;
+            while (ptr != null)
+            {
+                AddAtEnd(ptr.Data);
+                ptr = ptr.Next;
+            }
+        }
+        public void AddAtFront(T x)
+        {
+            Node<T> n = new Node<T>(x);
             n.Next = Head;
             Head = n;
         }
-        public void AddAtEnd(Node<T> n)
+        public void AddAtEnd(T x)
         {
+            Node<T> n = new Node<T>(x);
             if (Head == null)
             {
                 Head = n;
-                n.Next = null;
             }
             else
             {
-                Node<T> n2 = GetLastNode();
-                n2.Next = n;
+                Node<T> ptr = GetLastNode();
+                ptr.Next = n;
             }
         }
         public Node<T> GetLastNode()
         {
             Node<T> ptr = Head;
-            while (ptr != null)
+            while (ptr.Next != null)
                 ptr = ptr.Next;
             return ptr;
         }
@@ -71,7 +81,6 @@ namespace My_Course_Project_2021
         public void Print()
         {
             Node<T> ptr = Head;
-
             while (ptr != null)
             {
                 Console.Write("{0} -> ", ptr.Data);
@@ -79,16 +88,13 @@ namespace My_Course_Project_2021
             }
             Console.WriteLine();
         }
-        public override string ToString()
+        public static LinkedList<T> operator+(LinkedList<T> L1, LinkedList<T> L2)
         {
-            int counter = 0;
-            Node<T> ptr = Head;
-            while (ptr != null)
-            {
-                ptr = ptr.Next;
-                counter++;
-            }
-            return $"Linked List have {counter} elements";
+            LinkedList<T> tmp = new LinkedList<T>();
+            tmp.Clone(L1);
+            Node<T> ptr2 = tmp.GetLastNode();
+            ptr2.Next = L2.Head;
+            return tmp;
         }
     }
 }

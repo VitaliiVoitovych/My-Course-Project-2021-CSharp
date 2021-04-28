@@ -16,8 +16,9 @@ namespace My_Course_Project_2021
                 return true;
             return false;
         }
-        public void Push(Node<T> n)
+        public void Push(T x)
         {
+            Node<T> n = new Node<T>(x);
             n.Next = Top;
             Top = n;
         }
@@ -31,9 +32,15 @@ namespace My_Course_Project_2021
             else
                 Console.WriteLine("Stack empty");
         }
-        public void Clear()
+        public void Clear() => Top = null;
+        public void Clone(Stack<T> S)
         {
-            Top = null;
+            Node<T> ptr = S.Top;
+            while(ptr != null)
+            {
+                Push(ptr.Data);
+                ptr = ptr.Next;
+            }
         }
         public T Peek()
         {
@@ -47,10 +54,20 @@ namespace My_Course_Project_2021
             Node<T> ptr = Top;
             while (ptr != null)
             {
-                Console.WriteLine(ptr.Data);
+                Console.WriteLine("| {0} |", ptr.Data);
                 ptr = ptr.Next;
             }
             Console.WriteLine();
+        }
+        public static Stack<T> operator+(Stack<T> S1, Stack<T> S2)
+        {
+            Stack<T> tmp = new Stack<T>();
+            tmp.Clone(S2);
+            Node<T> ptr = tmp.Top;
+            while (ptr.Next != null)
+                ptr = ptr.Next;
+            ptr.Next = S1.Top;
+            return tmp;
         }
     }
 }

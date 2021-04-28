@@ -11,8 +11,9 @@ namespace My_Course_Project_2021
         public Node<T> Front { get; private set; } = null;
         public Node<T> Back { get; private set; } = null;
         public Queue() { }
-        public void Enqueue(Node<T> n)
+        public void Enqueue(T x)
         {
+            Node<T> n = new Node<T>(x);
             if(Back == null)
             {
                 Front = Back = n;
@@ -38,9 +39,15 @@ namespace My_Course_Project_2021
                 return true;
             return false;
         }
-        public void Clear()
+        public void Clear() => Front = Back = null;
+        public void Clone(Queue<T> Q)
         {
-            Front = Back = null;
+            Node<T> ptr = Q.Front;
+            while (ptr != null)
+            {
+                Enqueue(ptr.Data);
+                ptr = ptr.Next;
+            }
         }
         public T Peek()
         {
@@ -58,6 +65,16 @@ namespace My_Course_Project_2021
                 ptr = ptr.Next;
             }
             Console.WriteLine();
+        }
+        public static Queue<T> operator+(Queue<T> Q1, Queue<T> Q2)
+        {
+            Queue<T> tmp = new Queue<T>();
+            tmp.Clone(Q1);
+            Node<T> ptr = tmp.Front;
+            while (ptr.Next != null)
+                ptr = ptr.Next;
+            ptr.Next = Q2.Front;
+            return tmp;
         }
     }
 }

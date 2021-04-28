@@ -10,21 +10,21 @@
   <Class Name="My_Course_Project_2021.LinkedList&lt;T&gt;">
     <Position X="3" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAIAEIAAAAAAEAAABAAAAAAAAAABkAQA=</HashCode>
+      <HashCode>AABAAAAAAAAAAIAAYAAAAAAEAAABAAAAAAAAAABkARA=</HashCode>
       <FileName>LinkedList.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="My_Course_Project_2021.Queue&lt;T&gt;">
-    <Position X="4.75" Y="0.75" Width="1.5" />
+    <Position X="6.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQBAEAAAAAAEAAAAAAAAAAAAAAAABAAAAAAAAABEAAA=</HashCode>
+      <HashCode>AQBAEAAAAAAEAAAAQAAAAAAAAAAABAAAAAAAAABEABA=</HashCode>
       <FileName>Queue.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="My_Course_Project_2021.Stack&lt;T&gt;">
-    <Position X="6.5" Y="0.75" Width="1.5" />
+    <Position X="4.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAEAAAAAAAAAAAAAACIAAAAAAAAAABECAA=</HashCode>
+      <HashCode>AABAAAAAAAAEAAAAQAAAAAAAAACIAAAAAAAAAABECBA=</HashCode>
       <FileName>Stack.cs</FileName>
     </TypeIdentifier>
   </Class>

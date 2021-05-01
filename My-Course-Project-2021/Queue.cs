@@ -11,9 +11,15 @@ namespace My_Course_Project_2021
         public Node<T> Front { get; private set; } = null;
         public Node<T> Back { get; private set; } = null;
         public Queue() { }
-        public void Enqueue(T x)
+        public Queue(T element) => Enqueue(element);
+        public Queue(params T[] elements)
         {
-            Node<T> n = new Node<T>(x);
+            foreach (T item in elements)
+                Enqueue(item);
+        }
+        public void Enqueue(T element)
+        {
+            Node<T> n = new Node<T>(element);
             if(Back == null)
             {
                 Front = Back = n;

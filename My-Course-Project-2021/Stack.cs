@@ -10,16 +10,21 @@ namespace My_Course_Project_2021
     {
         public Node<T> Top { get; private set; } = null;
         public Stack() { }
+        public Stack(T element) => Push(element);
+        public Stack(params T[] elements)
+        {
+            foreach (T item in elements)
+                Push(item);
+        }
         public bool IsEmpty()
         {
             if (Top == null)
                 return true;
             return false;
         }
-        public void Push(T x)
+        public void Push(T element)
         {
-            Node<T> n = new Node<T>(x);
-            n.Next = Top;
+            Node<T> n = new Node<T>(element) { Next = Top};
             Top = n;
         }
         public void Pop()

@@ -16,12 +16,14 @@ namespace My_Course_Project_2021
             {
                 if (value != null)
                     data = value;
+                else
+                    throw new ArgumentNullException(nameof(value));
             }
         }
         public Node<T> Next { get; set; } = null;
-        public Node(T x)
+        public Node(T data)
         {
-            Data = x;
+            Data = data;
         }
     }
 }

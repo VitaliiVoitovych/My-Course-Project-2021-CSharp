@@ -10,6 +10,12 @@ namespace My_Course_Project_2021
     {
         public Node<T> Head { get; private set; } = null;
         public LinkedList() { }
+        public LinkedList(T element) => AddAtEnd(element);
+        public LinkedList(params T[] elements)
+        {
+            foreach (T item in elements)
+                AddAtEnd(item);
+        }
         public bool IsEmpty()
         {
             if (Head == null)
@@ -26,15 +32,14 @@ namespace My_Course_Project_2021
                 ptr = ptr.Next;
             }
         }
-        public void AddAtFront(T x)
+        public void AddAtFront(T element)
         {
-            Node<T> n = new Node<T>(x);
-            n.Next = Head;
+            Node<T> n = new Node<T>(element){ Next = Head };
             Head = n;
         }
-        public void AddAtEnd(T x)
+        public void AddAtEnd(T element)
         {
-            Node<T> n = new Node<T>(x);
+            Node<T> n = new Node<T>(element);
             if (Head == null)
             {
                 Head = n;
@@ -52,16 +57,16 @@ namespace My_Course_Project_2021
                 ptr = ptr.Next;
             return ptr;
         }
-        public Node<T> Search(T k)
+        public Node<T> Search(T element)
         {
             Node<T> ptr = Head;
-            while (ptr != null && !ptr.Data.Equals(k))
+            while (ptr != null && !ptr.Data.Equals(element))
                 ptr = ptr.Next;
             return ptr;
         }
-        public Node<T> DeleteNode(T x)
+        public Node<T> DeleteNode(T element)
         {
-            Node<T> n = Search(x);
+            Node<T> n = Search(element);
             Node<T> ptr = Head;
             if (IsEmpty())
                 throw new NullReferenceException("Стек пуст");
@@ -92,8 +97,8 @@ namespace My_Course_Project_2021
         {
             LinkedList<T> tmp = new LinkedList<T>();
             tmp.Clone(L1);
-            Node<T> ptr2 = tmp.GetLastNode();
-            ptr2.Next = L2.Head;
+            Node<T> ptr = tmp.GetLastNode();
+            ptr.Next = L2.Head;
             return tmp;
         }
     }

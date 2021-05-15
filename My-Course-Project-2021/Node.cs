@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,12 @@ namespace My_Course_Project_2021
         public Node(T data)
         {
             Data = data;
+        }
+        public static void Swap<V>(Node<V> n1, Node<V> n2)
+        {
+            V temp = n1.Data;
+            n1.Data = n2.Data;
+            n2.Data = temp;
         }
     }
 }

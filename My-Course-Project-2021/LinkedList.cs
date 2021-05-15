@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace My_Course_Project_2021
 {
-    class LinkedList<T>
+    class LinkedList<T> : IEnumerable
     {
         public Node<T> Head { get; private set; } = null;
         public LinkedList() { }
@@ -69,7 +70,9 @@ namespace My_Course_Project_2021
             Node<T> n = Search(element);
             Node<T> ptr = Head;
             if (IsEmpty())
-                throw new NullReferenceException("Стек пуст");
+            {
+                throw new NullReferenceException("Linked list empty!");
+            }
             else if (ptr == n)
             {
                 Head = n.Next;
@@ -93,6 +96,25 @@ namespace My_Course_Project_2021
             }
             Console.WriteLine();
         }
+        public static void Sort<V>(LinkedList<V> L) where V : IComparable<V>
+        {
+            Node<V> ptr1 = L.Head;
+            Node<V> ptr2;
+            while (ptr1 != null)
+            {
+                ptr2 = L.Head;
+                while (ptr2.Next != null)
+                {
+                    if (ptr2.Data.CompareTo(ptr2.Next.Data) > 0)
+                    {
+                        var tmp = ptr2.Next;
+                        Node<T>.Swap(ptr2, tmp);
+                    }
+                    ptr2 = ptr2.Next;
+                }
+                ptr1 = ptr1.Next;
+            }
+        }
         public static LinkedList<T> operator+(LinkedList<T> L1, LinkedList<T> L2)
         {
             LinkedList<T> tmp = new LinkedList<T>();
@@ -100,6 +122,15 @@ namespace My_Course_Project_2021
             Node<T> ptr = tmp.GetLastNode();
             ptr.Next = L2.Head;
             return tmp;
+        }
+        public IEnumerator GetEnumerator()
+        {
+            Node<T> current = Head;
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
         }
     }
 }

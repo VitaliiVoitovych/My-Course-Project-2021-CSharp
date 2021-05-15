@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace My_Course_Project_2021
 {
-    class Stack<T>
+    class Stack<T> : IEnumerable
     {
         public Node<T> Top { get; private set; } = null;
         public Stack() { }
@@ -64,6 +65,25 @@ namespace My_Course_Project_2021
             }
             Console.WriteLine();
         }
+        public static void Sort<V>(Stack<V> L) where V : IComparable<V>
+        {
+            Node<V> ptr1 = L.Top;
+            Node<V> ptr2;
+            while (ptr1 != null)
+            {
+                ptr2 = L.Top;
+                while (ptr2.Next != null)
+                {
+                    if (ptr2.Data.CompareTo(ptr2.Next.Data) > 0)
+                    {
+                        var tmp = ptr2.Next;
+                        Node<T>.Swap(ptr2, tmp);
+                    }
+                    ptr2 = ptr2.Next;
+                }
+                ptr1 = ptr1.Next;
+            }
+        }
         public static Stack<T> operator+(Stack<T> S1, Stack<T> S2)
         {
             Stack<T> tmp = new Stack<T>();
@@ -73,6 +93,15 @@ namespace My_Course_Project_2021
                 ptr = ptr.Next;
             ptr.Next = S1.Top;
             return tmp;
+        }
+        public IEnumerator GetEnumerator()
+        {
+            Node<T> current = Top;
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
         }
     }
 }

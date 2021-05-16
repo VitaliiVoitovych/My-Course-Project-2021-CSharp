@@ -22,6 +22,12 @@ namespace My_Course_Project_2021
             L3.Print();
             LinkedList<int>.Sort(L3);
             L3.Print();
+            LinkedList<int> L4 = new LinkedList<int>(3, 6, 2, 4);
+            foreach (var item in L4)
+            {
+                Console.Write("{0} ",item);
+            }
+            Console.WriteLine();
             Stack<int> S1 = new Stack<int>();
             S1.Push(6);
             S1.Push(3);

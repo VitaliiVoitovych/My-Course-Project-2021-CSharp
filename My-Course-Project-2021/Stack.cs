@@ -32,7 +32,6 @@ namespace My_Course_Project_2021
         {
             if (!IsEmpty())
             {
-                Node<T> n = Top;
                 Top = Top.Next;
             }
             else
@@ -65,6 +64,9 @@ namespace My_Course_Project_2021
             }
             Console.WriteLine();
         }
+        /// <summary>
+        /// Метод "Sort" базується на алгоритмі сортування бульбашкою
+        /// </summary>
         public static void Sort<V>(Stack<V> L) where V : IComparable<V>
         {
             Node<V> ptr1 = L.Top;

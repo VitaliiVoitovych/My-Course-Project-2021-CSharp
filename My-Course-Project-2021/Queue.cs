@@ -35,7 +35,6 @@ namespace My_Course_Project_2021
         {
             if (Front == null)
                 throw new NullReferenceException("Queue empty");
-            Node<T> n = Front;
             Front = Front.Next;
             if (Front == null)
                 Back = null;
@@ -73,6 +72,9 @@ namespace My_Course_Project_2021
             }
             Console.WriteLine();
         }
+        /// <summary>
+        /// Метод "Sort" базується на алгоритмі сортування бульбашкою
+        /// </summary>
         public static void Sort<V>(Queue<V> L) where V : IComparable<V>
         {
             Node<V> ptr1 = L.Front;

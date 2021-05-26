@@ -22,10 +22,7 @@ namespace My_Course_Project_2021
             }
         }
         public Node<T> Next { get; set; } = null;
-        public Node(T data)
-        {
-            Data = data;
-        }
+        public Node(T data) => Data = data;
         public static void Swap<V>(Node<V> n1, Node<V> n2)
         {
             V temp = n1.Data;

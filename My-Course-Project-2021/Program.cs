@@ -16,6 +16,8 @@ namespace My_Course_Project_2021
             L1.AddAtEnd(7);
             L1.AddAtFront(4);
             L1.Print();
+            L1.DeleteNode(4);
+            L1.Print();
             L2.Clone(L1);
             L2.Print();
             LinkedList<int> L3 = L1 + L2;

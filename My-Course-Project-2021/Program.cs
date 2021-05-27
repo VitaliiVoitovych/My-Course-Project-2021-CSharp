@@ -52,6 +52,18 @@ namespace My_Course_Project_2021
             Q3.Print();
             Queue<int>.Sort(Q3);
             Q3.Print();
+            LinkedList<int> l = new LinkedList<int>(3, 4, 7, 2);
+            Stack<int> s = (Stack<int>)l;
+            s.Print();
+            Queue<int> q = new Queue<int>();
+            try
+            {
+                q.Dequeue();
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message);
+            }
             Console.ReadLine();
         }
     }

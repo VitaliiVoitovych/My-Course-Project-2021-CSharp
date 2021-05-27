@@ -75,13 +75,14 @@ namespace My_Course_Project_2021
         /// <summary>
         /// Метод "Sort" базується на алгоритмі сортування бульбашкою
         /// </summary>
-        public static void Sort<V>(Queue<V> L) where V : IComparable<V>
+        /// <param name="Q">Черга яка сортується</param>
+        public static void Sort<V>(Queue<V> Q) where V : IComparable<V>
         {
-            Node<V> ptr1 = L.Front;
+            Node<V> ptr1 = Q.Front;
             Node<V> ptr2;
             while (ptr1 != null)
             {
-                ptr2 = L.Front;
+                ptr2 = Q.Front;
                 while (ptr2.Next != null)
                 {
                     if (ptr2.Data.CompareTo(ptr2.Next.Data) > 0)
@@ -104,6 +105,9 @@ namespace My_Course_Project_2021
             ptr.Next = Q2.Front;
             return tmp;
         }
+        /// <summary>
+        /// Реалізація інтерфейсу IEnumerable, для ітерації в циклі foreach
+        /// </summary>
         public IEnumerator GetEnumerator()
         {
             Node<T> current = Front;
@@ -112,6 +116,17 @@ namespace My_Course_Project_2021
                 yield return current.Data;
                 current = current.Next;
             }
+        }
+        /// <summary>
+        /// Операція явного перетворення. Наприклад:"(int)a"
+        /// </summary>
+        /// <param name="L">Список який перетворюєм</param>
+        public static explicit operator Queue<T>(LinkedList<T> L)
+        {
+            Queue<T> Q = new Queue<T>();
+            foreach (T item in L)
+                Q.Enqueue(item);
+            return Q;
         }
     }
 }

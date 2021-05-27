@@ -99,6 +99,7 @@ namespace My_Course_Project_2021
         /// <summary>
         /// Метод "Sort" базується на алгоритмі сортування бульбашкою
         /// </summary>
+        /// <param name="L">Список який сортується</param>
         public static void Sort<V>(LinkedList<V> L) where V : IComparable<V>
         {
             Node<V> ptr1 = L.Head;
@@ -126,6 +127,9 @@ namespace My_Course_Project_2021
             ptr.Next = L2.Head;
             return tmp;
         }
+        /// <summary>
+        /// Реалізація інтерфейсу IEnumerable, для ітерації в стилі foreach
+        /// </summary>
         public IEnumerator GetEnumerator()
         {
             Node<T> current = Head;

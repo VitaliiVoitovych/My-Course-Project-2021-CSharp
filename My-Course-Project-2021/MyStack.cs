@@ -64,6 +64,11 @@ namespace My_Course_Project_2021
             else
                 throw new NullReferenceException("Stack empty");
         }
+        /// <summary>
+        /// Визначення індексу елемента
+        /// </summary>
+        /// <param name="element">Елемент, індекс якого визначаємо</param>
+        /// <returns>Індекс</returns>
         public int IndexOf(T element)
         {
             int index = 0;

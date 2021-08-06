@@ -2,6 +2,10 @@
 
 namespace My_Course_Project_2021
 {
+    /// <summary>
+    /// Клас "Вузол"
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     class Node<T>
     {
         private T data = default(T);

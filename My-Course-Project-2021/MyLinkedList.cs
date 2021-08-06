@@ -3,9 +3,21 @@ using System.Collections;
 
 namespace My_Course_Project_2021
 {
+    /// <summary>
+    /// Клас однозв'язного списку
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     class MyLinkedList<T> : IEnumerable
     {
+        /// <summary>
+        /// Голова списку
+        /// </summary>
         public Node<T> Head { get; private set; } = null;
+        /// <summary>
+        /// Повертає значення по указаному індексу
+        /// </summary>
+        /// <param name="index">Індекс</param>
+        /// <returns>Значення вузла</returns>
         public T this[int index]
         {
             get
@@ -27,6 +39,10 @@ namespace My_Course_Project_2021
             foreach (T item in elements)
                 AddAtEnd(item);
         }
+        /// <summary>
+        /// Перевіряє чи список пустий
+        /// </summary>
+        /// <returns>Булеве значення</returns>
         public bool IsEmpty()
         {
             if (Head == null)
@@ -34,6 +50,10 @@ namespace My_Course_Project_2021
             return false;
         }
         public void Clear() => Head = null;
+        /// <summary>
+        /// Клонує елементи з іншого списку
+        /// </summary>
+        /// <param name="L">Список з якого клонуєм</param>
         public void Clone(MyLinkedList<T> L)
         {
             Node<T> ptr = L.Head;
@@ -43,11 +63,19 @@ namespace My_Course_Project_2021
                 ptr = ptr.Next;
             }
         }
+        /// <summary>
+        /// Додає елемент в початок списку
+        /// </summary>
+        /// <param name="element">Елемент який додається</param>
         public void AddAtFront(T element)
         {
             Node<T> n = new Node<T>(element){ Next = Head };
             Head = n;
         }
+        /// <summary>
+        /// Додає елемент в кінець списку
+        /// </summary>
+        /// <param name="element">Елемент який додається</param>
         public void AddAtEnd(T element)
         {
             Node<T> n = new Node<T>(element);
@@ -61,6 +89,10 @@ namespace My_Course_Project_2021
                 ptr.Next = n;
             }
         }
+        /// <summary>
+        /// Визначає кінцевий вузол списка
+        /// </summary>
+        /// <returns>Кінцевий вузол</returns>
         public Node<T> GetLastNode()
         {
             Node<T> ptr = Head;
@@ -68,6 +100,11 @@ namespace My_Course_Project_2021
                 ptr = ptr.Next;
             return ptr;
         }
+        /// <summary>
+        /// Шукає елемент в списку
+        /// </summary>
+        /// <param name="element">Шуканий елемент</param>
+        /// <returns>Шуканий елемент(Вузол)</returns>
         public Node<T> Search(T element)
         {
             Node<T> ptr = Head;
@@ -75,6 +112,11 @@ namespace My_Course_Project_2021
                 ptr = ptr.Next;
             return ptr;
         }
+        /// <summary>
+        /// Визначає індекс елемента
+        /// </summary>
+        /// <param name="element">Елемент, індекс якого визначаємо</param>
+        /// <returns>Індекс</returns>
         public int IndexOf(T element)
         {
             int index = 0;
@@ -89,6 +131,11 @@ namespace My_Course_Project_2021
             }
             return -1;
         }
+        /// <summary>
+        /// Видаляє елемент(Вузол) з списку
+        /// </summary>
+        /// <param name="element">Елемент який видаляємо</param>
+        /// <returns>Видалений вузол</returns>
         public Node<T> DeleteNode(T element)
         {
             Node<T> n = Search(element);
@@ -110,6 +157,9 @@ namespace My_Course_Project_2021
                 return n;
             }
         }
+        /// <summary>
+        /// Виводить список
+        /// </summary>
         public void Print()
         {
             Node<T> ptr = Head;
@@ -121,7 +171,7 @@ namespace My_Course_Project_2021
             Console.WriteLine();
         }
         /// <summary>
-        /// Метод "Sort" базується на алгоритмі сортування бульбашкою
+        /// Сортує список, методом бульбашки
         /// </summary>
         /// <param name="L">Список який сортується</param>
         public static void Sort<V>(MyLinkedList<V> L) where V : IComparable<V>

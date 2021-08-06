@@ -1,18 +1,28 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace My_Course_Project_2021
 {
-    class LinkedList<T> : IEnumerable
+    class MyLinkedList<T> : IEnumerable
     {
         public Node<T> Head { get; private set; } = null;
-        public LinkedList() { }
-        public LinkedList(T element) => AddAtEnd(element);
-        public LinkedList(params T[] elements)
+        public T this[int index]
+        {
+            get
+            {
+                Node<T> ptr = Head;
+                while (ptr != null)
+                {
+                    if (index == IndexOf(ptr.Data))
+                        return ptr.Data;
+                    ptr = ptr.Next;
+                }
+                throw new ArgumentOutOfRangeException("Error");
+            }
+        }
+        public MyLinkedList() { }
+        public MyLinkedList(T element) => AddAtEnd(element);
+        public MyLinkedList(params T[] elements)
         {
             foreach (T item in elements)
                 AddAtEnd(item);
@@ -24,7 +34,7 @@ namespace My_Course_Project_2021
             return false;
         }
         public void Clear() => Head = null;
-        public void Clone(LinkedList<T> L)
+        public void Clone(MyLinkedList<T> L)
         {
             Node<T> ptr = L.Head;
             while (ptr != null)
@@ -65,6 +75,20 @@ namespace My_Course_Project_2021
                 ptr = ptr.Next;
             return ptr;
         }
+        public int IndexOf(T element)
+        {
+            int index = 0;
+            Node<T> ptr = Head;
+            while (ptr != null)
+            {
+                if (ptr.Data.Equals(element))
+                    return index;
+                else
+                    index++;
+                ptr = ptr.Next;
+            }
+            return -1;
+        }
         public Node<T> DeleteNode(T element)
         {
             Node<T> n = Search(element);
@@ -100,7 +124,7 @@ namespace My_Course_Project_2021
         /// Метод "Sort" базується на алгоритмі сортування бульбашкою
         /// </summary>
         /// <param name="L">Список який сортується</param>
-        public static void Sort<V>(LinkedList<V> L) where V : IComparable<V>
+        public static void Sort<V>(MyLinkedList<V> L) where V : IComparable<V>
         {
             Node<V> ptr1 = L.Head;
             Node<V> ptr2;
@@ -119,9 +143,9 @@ namespace My_Course_Project_2021
                 ptr1 = ptr1.Next;
             }
         }
-        public static LinkedList<T> operator+(LinkedList<T> L1, LinkedList<T> L2)
+        public static MyLinkedList<T> operator+(MyLinkedList<T> L1, MyLinkedList<T> L2)
         {
-            LinkedList<T> tmp = new LinkedList<T>();
+            MyLinkedList<T> tmp = new MyLinkedList<T>();
             tmp.Clone(L1);
             Node<T> ptr = tmp.GetLastNode();
             ptr.Next = L2.Head;

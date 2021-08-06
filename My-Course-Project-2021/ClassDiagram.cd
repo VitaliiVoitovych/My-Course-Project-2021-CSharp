@@ -7,27 +7,27 @@
       <FileName>Node.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="My_Course_Project_2021.Stack&lt;T&gt;">
+  <Class Name="My_Course_Project_2021.MyStack&lt;T&gt;">
     <Position X="4.75" Y="1.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAEABAAQAAQAAAAAACIAAAAAAAAAABECBA=</HashCode>
-      <FileName>Stack.cs</FileName>
+      <HashCode>AABAAAAAAAAEABAAQAAQAAAAAACIAABAAAAAAABECBA=</HashCode>
+      <FileName>MyStack.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="My_Course_Project_2021.Queue&lt;T&gt;">
+  <Class Name="My_Course_Project_2021.MyQueue&lt;T&gt;">
     <Position X="7" Y="1.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AQBAEAAAAAAEABAAQAAQAAAAAAAABAAAAAAAAABEABA=</HashCode>
-      <FileName>Queue.cs</FileName>
+      <HashCode>AQBAEAgAAAAEABAAQAAQAAAAAAAABAAAAAAAAABEABA=</HashCode>
+      <FileName>MyQueue.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="My_Course_Project_2021.LinkedList&lt;T&gt;">
+  <Class Name="My_Course_Project_2021.MyLinkedList&lt;T&gt;">
     <Position X="2.25" Y="1.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAAAJAAYAAQAAAEAAABAAAAAAAAAABkARA=</HashCode>
-      <FileName>LinkedList.cs</FileName>
+      <FileName>MyLinkedList.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>

@@ -1,19 +1,29 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace My_Course_Project_2021
 {
-    class Queue<T> : IEnumerable
+    class MyQueue<T> : IEnumerable
     {
         public Node<T> Front { get; private set; } = null;
         public Node<T> Back { get; private set; } = null;
-        public Queue() { }
-        public Queue(T element) => Enqueue(element);
-        public Queue(params T[] elements)
+        public T this[int index]
+        {
+            get
+            {
+                Node<T> ptr = Front;
+                while (ptr != null)
+                {
+                    if (index == IndexOf(ptr.Data))
+                        return ptr.Data;
+                    ptr = ptr.Next;
+                }
+                throw new ArgumentOutOfRangeException("Error");
+            }
+        }
+        public MyQueue() { }
+        public MyQueue(T element) => Enqueue(element);
+        public MyQueue(params T[] elements)
         {
             foreach (T item in elements)
                 Enqueue(item);
@@ -46,7 +56,7 @@ namespace My_Course_Project_2021
             return false;
         }
         public void Clear() => Front = Back = null;
-        public void Clone(Queue<T> Q)
+        public void Clone(MyQueue<T> Q)
         {
             Node<T> ptr = Q.Front;
             while (ptr != null)
@@ -62,6 +72,20 @@ namespace My_Course_Project_2021
             else
                 throw new NullReferenceException("Queue empty!");
         }
+        public int IndexOf(T element)
+        {
+            int index = 0;
+            Node<T> ptr = Front;
+            while (ptr != null)
+            {
+                if (ptr.Data.Equals(element))
+                    return index;
+                else
+                    index++;
+                ptr = ptr.Next;
+            }
+            return -1;
+        }
         public void Print()
         {
             Node<T> ptr = Front;
@@ -76,7 +100,7 @@ namespace My_Course_Project_2021
         /// Метод "Sort" базується на алгоритмі сортування бульбашкою
         /// </summary>
         /// <param name="Q">Черга яка сортується</param>
-        public static void Sort<V>(Queue<V> Q) where V : IComparable<V>
+        public static void Sort<V>(MyQueue<V> Q) where V : IComparable<V>
         {
             Node<V> ptr1 = Q.Front;
             Node<V> ptr2;
@@ -95,9 +119,9 @@ namespace My_Course_Project_2021
                 ptr1 = ptr1.Next;
             }
         }
-        public static Queue<T> operator+(Queue<T> Q1, Queue<T> Q2)
+        public static MyQueue<T> operator+(MyQueue<T> Q1, MyQueue<T> Q2)
         {
-            Queue<T> tmp = new Queue<T>();
+            MyQueue<T> tmp = new MyQueue<T>();
             tmp.Clone(Q1);
             Node<T> ptr = tmp.Front;
             while (ptr.Next != null)
@@ -121,9 +145,9 @@ namespace My_Course_Project_2021
         /// Операція явного перетворення. Наприклад:"(int)a"
         /// </summary>
         /// <param name="L">Список який перетворюєм</param>
-        public static explicit operator Queue<T>(LinkedList<T> L)
+        public static explicit operator MyQueue<T>(MyLinkedList<T> L)
         {
-            Queue<T> Q = new Queue<T>();
+            MyQueue<T> Q = new MyQueue<T>();
             foreach (T item in L)
                 Q.Enqueue(item);
             return Q;

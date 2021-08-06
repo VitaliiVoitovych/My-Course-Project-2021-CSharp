@@ -10,52 +10,53 @@ namespace My_Course_Project_2021
     {
         static void Main(string[] args)
         {
-            LinkedList<int> L1 = new LinkedList<int>();
-            LinkedList<int> L2 = new LinkedList<int>();
+            MyLinkedList<int> L1 = new MyLinkedList<int>();
+            MyLinkedList<int> L2 = new MyLinkedList<int>();
             L1.AddAtFront(2);
             L1.AddAtEnd(7);
             L1.AddAtFront(4);
             L1.Print();
+            Console.WriteLine(L1[3]);
             L1.DeleteNode(4);
             L1.Print();
             L2.Clone(L1);
             L2.Print();
-            LinkedList<int> L3 = L1 + L2;
+            MyLinkedList<int> L3 = L1 + L2;
             L3.Print();
-            LinkedList<int>.Sort(L3);
+            MyLinkedList<int>.Sort(L3);
             L3.Print();
-            LinkedList<int> L4 = new LinkedList<int>(3, 6, 2, 4);
+            MyLinkedList<int> L4 = new MyLinkedList<int>(3, 6, 2, 4);
             foreach (var item in L4)
             {
                 Console.Write("{0} ",item);
             }
             Console.WriteLine();
-            Stack<int> S1 = new Stack<int>();
+            MyStack<int> S1 = new MyStack<int>();
             S1.Push(6);
             S1.Push(3);
             S1.Print();
-            Stack<int> S2 = new Stack<int>();
+            MyStack<int> S2 = new MyStack<int>();
             S2.Clone(S1);
             S2.Print();
-            Stack<int> S3 = S1 + S2;
+            MyStack<int> S3 = S1 + S2;
             S3.Print();
-            Stack<int>.Sort(S3);
+            MyStack<int>.Sort(S3);
             S3.Print();
-            Queue<int> Q1 = new Queue<int>();
+            MyQueue<int> Q1 = new MyQueue<int>();
             Q1.Enqueue(3);
             Q1.Enqueue(2);
             Q1.Print();
-            Queue<int> Q2 = new Queue<int>();
+            MyQueue<int> Q2 = new MyQueue<int>();
             Q2.Clone(Q1);
             Q2.Print();
-            Queue<int> Q3 = Q1 + Q2;
+            MyQueue<int> Q3 = Q1 + Q2;
             Q3.Print();
-            Queue<int>.Sort(Q3);
+            MyQueue<int>.Sort(Q3);
             Q3.Print();
-            LinkedList<int> l = new LinkedList<int>(3, 4, 7, 2);
-            Stack<int> s = (Stack<int>)l;
+            MyLinkedList<int> l = new MyLinkedList<int>(3, 4, 7, 2);
+            MyStack<int> s = (MyStack<int>)l;
             s.Print();
-            Queue<int> q = new Queue<int>();
+            MyQueue<int> q = new MyQueue<int>();
             try
             {
                 q.Dequeue();

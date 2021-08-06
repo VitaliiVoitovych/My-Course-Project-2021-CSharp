@@ -1,18 +1,28 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace My_Course_Project_2021
 {
-    class Stack<T> : IEnumerable
+    class MyStack<T> : IEnumerable
     {
         public Node<T> Top { get; private set; } = null;
-        public Stack() { }
-        public Stack(T element) => Push(element);
-        public Stack(params T[] elements)
+        public T this[int index]
+        {
+            get
+            {
+                Node<T> ptr = Top;
+                while (ptr != null)
+                {
+                    if (index == IndexOf(ptr.Data))
+                        return ptr.Data;
+                    ptr = ptr.Next;
+                }
+                throw new ArgumentOutOfRangeException("Error");
+            }
+        }
+        public MyStack() { }
+        public MyStack(T element) => Push(element);
+        public MyStack(params T[] elements)
         {
             foreach (T item in elements)
                 Push(item);
@@ -38,7 +48,7 @@ namespace My_Course_Project_2021
                 Console.WriteLine("Stack empty");
         }
         public void Clear() => Top = null;
-        public void Clone(Stack<T> S)
+        public void Clone(MyStack<T> S)
         {
             Node<T> ptr = S.Top;
             while(ptr != null)
@@ -54,6 +64,20 @@ namespace My_Course_Project_2021
             else
                 throw new NullReferenceException("Stack empty");
         }
+        public int IndexOf(T element)
+        {
+            int index = 0;
+            Node<T> ptr = Top;
+            while (ptr != null)
+            {
+                if (ptr.Data.Equals(element))
+                    return index;
+                else
+                    index++;
+                ptr = ptr.Next;
+            }
+            return -1;
+        }
         public void Print()
         {
             Node<T> ptr = Top;
@@ -68,7 +92,7 @@ namespace My_Course_Project_2021
         /// Метод "Sort" базується на алгоритмі сортування бульбашкою
         /// </summary>
         /// <param name="S">Стек який сортуєм</param>
-        public static void Sort<V>(Stack<V> S) where V : IComparable<V>
+        public static void Sort<V>(MyStack<V> S) where V : IComparable<V>
         {
             Node<V> ptr1 = S.Top;
             Node<V> ptr2;
@@ -87,9 +111,9 @@ namespace My_Course_Project_2021
                 ptr1 = ptr1.Next;
             }
         }
-        public static Stack<T> operator+(Stack<T> S1, Stack<T> S2)
+        public static MyStack<T> operator+(MyStack<T> S1, MyStack<T> S2)
         {
-            Stack<T> tmp = new Stack<T>();
+            MyStack<T> tmp = new MyStack<T>();
             tmp.Clone(S2);
             Node<T> ptr = tmp.Top;
             while (ptr.Next != null)
@@ -113,9 +137,9 @@ namespace My_Course_Project_2021
         /// Операція явного перетворення. Наприклад:"(int)a"
         /// </summary>
         /// <param name="L">Список який перетворюєм</param>
-        public static explicit operator Stack<T>(LinkedList<T> L)
+        public static explicit operator MyStack<T>(MyLinkedList<T> L)
         {
-            Stack<T> S = new Stack<T>();
+            MyStack<T> S = new MyStack<T>();
             foreach (T item in L)
                 S.Push(item);
             return S;

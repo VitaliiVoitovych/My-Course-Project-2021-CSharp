@@ -1,12 +1,28 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace My_Course_Project_2021
 {
-    class MyQueue<T> : IEnumerable
+    /// <summary>
+    /// Черга
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    class MyQueue<T> : IEnumerable, IEnumerable<T>
     {
+        /// <summary>
+        /// Перший елемент черги
+        /// </summary>
         public Node<T> Front { get; private set; } = null;
+        /// <summary>
+        /// Останній елемент черги
+        /// </summary>
         public Node<T> Back { get; private set; } = null;
+        /// <summary>
+        /// Повертає значення по указаному індексу
+        /// </summary>
+        /// <param name="index">Індекс</param>
+        /// <returns>Значення вузла</returns>
         public T this[int index]
         {
             get
@@ -28,6 +44,10 @@ namespace My_Course_Project_2021
             foreach (T item in elements)
                 Enqueue(item);
         }
+        /// <summary>
+        /// Додає елемент в кінець черги
+        /// </summary>
+        /// <param name="element"></param>
         public void Enqueue(T element)
         {
             Node<T> n = new Node<T>(element);
@@ -41,6 +61,9 @@ namespace My_Course_Project_2021
                 Back = n;
             }
         }
+        /// <summary>
+        /// Видаляє перший елемент з черги
+        /// </summary>
         public void Dequeue()
         {
             if (Front == null)
@@ -49,13 +72,24 @@ namespace My_Course_Project_2021
             if (Front == null)
                 Back = null;
         }
+        /// <summary>
+        /// Перевіряє чи список пустий
+        /// </summary>
+        /// <returns>Булеве значення</returns>
         public bool IsEmpty()
         {
             if (Front == null)
                 return true;
             return false;
         }
+        /// <summary>
+        /// Очищує чергу
+        /// </summary>
         public void Clear() => Front = Back = null;
+        /// <summary>
+        /// Клонує елементи з іншої черги
+        /// </summary>
+        /// <param name="Q"></param>
         public void Clone(MyQueue<T> Q)
         {
             Node<T> ptr = Q.Front;
@@ -65,6 +99,10 @@ namespace My_Course_Project_2021
                 ptr = ptr.Next;
             }
         }
+        /// <summary>
+        /// Повертає значення з верхньої частини стеку
+        /// </summary>
+        /// <returns>Значення верхнього елементу</returns>
         public T Peek()
         {
             if (!IsEmpty())
@@ -91,6 +129,9 @@ namespace My_Course_Project_2021
             }
             return -1;
         }
+       /// <summary>
+       /// Виводить чергу
+       /// </summary>
         public void Print()
         {
             Node<T> ptr = Front;
@@ -102,9 +143,9 @@ namespace My_Course_Project_2021
             Console.WriteLine();
         }
         /// <summary>
-        /// Метод "Sort" базується на алгоритмі сортування бульбашкою
+        /// Сортує черг, методом бульбашки
         /// </summary>
-        /// <param name="Q">Черга яка сортується</param>
+        /// <param name="Q">Черга який сортується</param>
         public static void Sort<V>(MyQueue<V> Q) where V : IComparable<V>
         {
             Node<V> ptr1 = Q.Front;
@@ -135,18 +176,6 @@ namespace My_Course_Project_2021
             return tmp;
         }
         /// <summary>
-        /// Реалізація інтерфейсу IEnumerable, для ітерації в циклі foreach
-        /// </summary>
-        public IEnumerator GetEnumerator()
-        {
-            Node<T> current = Front;
-            while (current != null)
-            {
-                yield return current.Data;
-                current = current.Next;
-            }
-        }
-        /// <summary>
         /// Операція явного перетворення. Наприклад:"(int)a"
         /// </summary>
         /// <param name="L">Список який перетворюєм</param>
@@ -156,6 +185,34 @@ namespace My_Course_Project_2021
             foreach (T item in L)
                 Q.Enqueue(item);
             return Q;
+        }
+        public static explicit operator MyQueue<T>(T[] array)
+        {
+            MyQueue<T> Q = new MyQueue<T>();
+            foreach (T item in array)
+                Q.Enqueue(item);
+            return Q;
+        }
+        /// <summary>
+        /// Реалізація інтерфейсу IEnumerable<T>,IEnumerable для ітерації в стилі foreach
+        /// </summary>
+        public IEnumerator<T> GetEnumerator()
+        {
+            Node<T> current = Front;
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            Node<T> current = Front;
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
         }
     }
 }

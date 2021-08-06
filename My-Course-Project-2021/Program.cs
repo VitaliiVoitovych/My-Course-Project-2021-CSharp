@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,11 @@ namespace My_Course_Project_2021
             L1.AddAtEnd(7);
             L1.AddAtFront(4);
             L1.Print();
-            Console.WriteLine(L1[3]);
+            int[] array = L1.ToArray();
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.WriteLine("{0} {1}",i,array[i]);
+            }
             L1.DeleteNode(4);
             L1.Print();
             L2.Clone(L1);
@@ -53,6 +58,8 @@ namespace My_Course_Project_2021
             Q3.Print();
             MyQueue<int>.Sort(Q3);
             Q3.Print();
+            int[] arr = Enumerable.Range(1, 5).ToArray();
+            MyLinkedList<int> list = (MyLinkedList<int>)arr;
             MyLinkedList<int> l = new MyLinkedList<int>(3, 4, 7, 2);
             MyStack<int> s = (MyStack<int>)l;
             s.Print();

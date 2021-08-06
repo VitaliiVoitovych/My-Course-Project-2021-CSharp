@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace My_Course_Project_2021
 {
     /// <summary>
-    /// Клас однозв'язного списку
+    /// Однозв'язний список
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    class MyLinkedList<T> : IEnumerable
+    class MyLinkedList<T> : IEnumerable, IEnumerable<T>
     {
         /// <summary>
         /// Голова списку
@@ -49,6 +50,9 @@ namespace My_Course_Project_2021
                 return true;
             return false;
         }
+        /// <summary>
+        /// Очищує список
+        /// </summary>
         public void Clear() => Head = null;
         /// <summary>
         /// Клонує елементи з іншого списку
@@ -202,9 +206,29 @@ namespace My_Course_Project_2021
             return tmp;
         }
         /// <summary>
-        /// Реалізація інтерфейсу IEnumerable, для ітерації в стилі foreach
+        /// Операція явного перетворення. Наприклад:"(int)a"
         /// </summary>
-        public IEnumerator GetEnumerator()
+        /// <param name="array">Массив який перетворюєм</param>
+        public static explicit operator MyLinkedList<T>(T[] array)
+        {
+            MyLinkedList<T> L = new MyLinkedList<T>();
+            foreach (T item in array)
+                L.AddAtEnd(item);
+            return L;
+        }
+        /// <summary>
+        /// Реалізація інтерфейсу IEnumerable<T>,IEnumerable для ітерації в стилі foreach
+        /// </summary>
+        public IEnumerator<T> GetEnumerator()
+        {
+            Node<T> current = Head;
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
+        }
+        IEnumerator IEnumerable.GetEnumerator()
         {
             Node<T> current = Head;
             while (current != null)

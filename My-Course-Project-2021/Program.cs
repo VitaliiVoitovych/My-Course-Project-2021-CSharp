@@ -61,7 +61,7 @@ namespace My_Course_Project_2021
             int[] arr = Enumerable.Range(1, 5).ToArray();
             MyLinkedList<int> list = (MyLinkedList<int>)arr;
             MyLinkedList<int> l = new MyLinkedList<int>(3, 4, 7, 2);
-            MyStack<int> s = (MyStack<int>)l;
+            MyStack<int> s = (MyStack<int>)1;
             s.Print();
             MyQueue<int> q = new MyQueue<int>();
             try

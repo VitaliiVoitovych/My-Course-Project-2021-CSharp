@@ -208,20 +208,13 @@ namespace My_Course_Project_2021
         /// <summary>
         /// Операція явного перетворення. Наприклад:"(int)a"
         /// </summary>
-        /// <param name="collection">Колекція який перетворюєм</param>
-        public static explicit operator MyLinkedList<T>(T collection)
+        /// <param name="array">Масив який перетворюєм</param>
+        public static explicit operator MyLinkedList<T>(T[] array)
         {
-            if (collection is IEnumerable arr)
-            {
-                MyLinkedList<T> L = new MyLinkedList<T>();
-                foreach (T item in arr)
-                    L.AddAtEnd(item);
-                return L;
-            }
-            else
-            {
-                throw new InvalidCastException("Error");
-            }
+            MyLinkedList<T> L = new MyLinkedList<T>();
+            foreach (T item in array)
+                L.AddAtEnd(item);
+            return L;
         }
         /// <summary>
         /// Реалізація інтерфейсу IEnumerable<T>,IEnumerable для ітерації в стилі foreach

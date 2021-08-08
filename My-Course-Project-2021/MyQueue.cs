@@ -178,20 +178,13 @@ namespace My_Course_Project_2021
         /// <summary>
         /// Операція явного перетворення. Наприклад:"(int)a"
         /// </summary>
-        /// <param name="collection">Колекція який перетворюєм</param>
-        public static explicit operator MyQueue<T>(MyLinkedList<T> collection)
+        /// <param name="array">Масив який перетворюєм</param>
+        public static explicit operator MyQueue<T>(T[] array)
         {
-            if (collection is IEnumerable arr)
-            {
-                MyQueue<T> Q = new MyQueue<T>();
-                foreach (T item in arr)
-                    Q.Enqueue(item);
-                return Q;
-            }
-            else
-            {
-                throw new InvalidCastException("Error");
-            }
+            MyQueue<T> Q = new MyQueue<T>();
+            foreach (T item in array)
+                Q.Enqueue(item);
+            return Q;
         }
         /// <summary>
         /// Реалізація інтерфейсу IEnumerable<T>,IEnumerable для ітерації в стилі foreach

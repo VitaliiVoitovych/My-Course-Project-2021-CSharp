@@ -167,20 +167,13 @@ namespace My_Course_Project_2021
         /// <summary>
         /// Операція явного перетворення. Наприклад:"(int)a"
         /// </summary>
-        /// <param name="collection">Колекція який перетворюєм</param>
-        public static explicit operator MyStack<T>(T collection)
+        /// <param name="array">Масив який перетворюєм</param>
+        public static explicit operator MyStack<T>(T[] array)
         {
-            if (collection is IEnumerable arr)
-            {
-                MyStack<T> S = new MyStack<T>();
-                foreach (T item in arr)
-                    S.Push(item);
-                return S;
-            }
-            else
-            {
-                throw new InvalidCastException("Error");
-            }
+            MyStack<T> S = new MyStack<T>();
+            foreach (T item in array)
+                S.Push(item);
+            return S;
         }
         /// <summary>
         /// Реалізація інтерфейсу IEnumerable<T>,IEnumerable для ітерації в стилі foreach

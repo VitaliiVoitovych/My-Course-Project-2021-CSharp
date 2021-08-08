@@ -169,10 +169,7 @@ namespace My_Course_Project_2021
         {
             MyQueue<T> tmp = new MyQueue<T>();
             tmp.Clone(Q1);
-            Node<T> ptr = tmp.Front;
-            while (ptr.Next != null)
-                ptr = ptr.Next;
-            ptr.Next = Q2.Front;
+            tmp.Back.Next = Q2.Front;
             return tmp;
         }
         /// <summary>

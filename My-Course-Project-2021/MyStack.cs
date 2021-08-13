@@ -14,25 +14,6 @@ namespace My_Course_Project_2021
         /// Вверх стеку
         /// </summary>
         public Node<T> Top { get; private set; } = null;
-        /// <summary>
-        /// Повертає значення по указаному індексу
-        /// </summary>
-        /// <param name="index">Індекс</param>
-        /// <returns>Значення вузла</returns>
-        public T this[int index]
-        {
-            get
-            {
-                Node<T> ptr = Top;
-                while (ptr != null)
-                {
-                    if (index == IndexOf(ptr.Data))
-                        return ptr.Data;
-                    ptr = ptr.Next;
-                }
-                throw new ArgumentOutOfRangeException("Error");
-            }
-        }
         public MyStack() { }
         public MyStack(T element) => Push(element);
         public MyStack(params T[] elements)
@@ -98,25 +79,6 @@ namespace My_Course_Project_2021
                 return Top.Data;
             else
                 throw new NullReferenceException("Stack empty");
-        }
-        /// <summary>
-        /// Визначає індекс елемента
-        /// </summary>
-        /// <param name="element">Елемент, індекс якого визначаємо</param>
-        /// <returns>Індекс</returns>
-        public int IndexOf(T element)
-        {
-            int index = 0;
-            Node<T> ptr = Top;
-            while (ptr != null)
-            {
-                if (ptr.Data.Equals(element))
-                    return index;
-                else
-                    index++;
-                ptr = ptr.Next;
-            }
-            return -1;
         }
         /// <summary>
         /// Виводить стек

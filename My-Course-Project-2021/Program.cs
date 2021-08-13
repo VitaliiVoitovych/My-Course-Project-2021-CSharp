@@ -15,14 +15,10 @@ namespace My_Course_Project_2021
             MyLinkedList<int> L2 = new MyLinkedList<int>();
             L1.AddAtFront(2);
             L1.AddAtEnd(7);
-            L1.AddAtFront(4);
+            L1.AddAtFront(2);
+            L1.AddAtEnd(2);
             L1.Print();
-            int[] array = L1.ToArray();
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.WriteLine("{0} {1}",i,array[i]);
-            }
-            L1.DeleteNode(4);
+            L1.DeleteNode(7);
             L1.Print();
             L2.Clone(L1);
             L2.Print();

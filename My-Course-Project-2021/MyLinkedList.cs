@@ -14,25 +14,6 @@ namespace My_Course_Project_2021
         /// Голова списку
         /// </summary>
         public Node<T> Head { get; private set; } = null;
-        /// <summary>
-        /// Повертає значення по указаному індексу
-        /// </summary>
-        /// <param name="index">Індекс</param>
-        /// <returns>Значення вузла</returns>
-        public T this[int index]
-        {
-            get
-            {
-                Node<T> ptr = Head;
-                while (ptr != null)
-                {
-                    if (index == IndexOf(ptr.Data))
-                        return ptr.Data;
-                    ptr = ptr.Next;
-                }
-                throw new ArgumentOutOfRangeException("Error");
-            }
-        }
         public MyLinkedList() { }
         public MyLinkedList(T element) => AddAtEnd(element);
         public MyLinkedList(params T[] elements)
@@ -115,25 +96,6 @@ namespace My_Course_Project_2021
             while (ptr != null && !ptr.Data.Equals(element))
                 ptr = ptr.Next;
             return ptr;
-        }
-        /// <summary>
-        /// Визначає індекс елемента
-        /// </summary>
-        /// <param name="element">Елемент, індекс якого визначаємо</param>
-        /// <returns>Індекс</returns>
-        public int IndexOf(T element)
-        {
-            int index = 0;
-            Node<T> ptr = Head;
-            while (ptr != null)
-            {
-                if (ptr.Data.Equals(element))
-                    return index;
-                else
-                    index++;
-                ptr = ptr.Next;
-            }
-            return -1;
         }
         /// <summary>
         /// Видаляє елемент(Вузол) з списку
